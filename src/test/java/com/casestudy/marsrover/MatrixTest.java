@@ -23,7 +23,7 @@ class MatrixTest extends BaseUnitTest {
     }
 
     @Test
-    void parseMatrix_Success_WhenWrongCharacterIsSent() {
+    void parseMatrix_Fail_WhenWrongCharacterIsSent() {
         String matrixArea = "a 7";
 
         NumberFormatException exception = assertThrows(NumberFormatException.class,

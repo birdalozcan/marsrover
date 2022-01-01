@@ -33,7 +33,7 @@ class PositionTest extends BaseUnitTest {
     }
 
     @Test
-    void parsePosition_Success_WhenWrongCoordinateCharacterIsSent() {
+    void parsePosition_Fail_WhenWrongCoordinateCharacterIsSent() {
         String locationAsString = "a 7 N";
 
         NumberFormatException exception = assertThrows(NumberFormatException.class,
@@ -45,7 +45,7 @@ class PositionTest extends BaseUnitTest {
     }
 
     @Test
-    void parsePosition_Success_WhenWrongDirectionIsSent() {
+    void parsePosition_Fail_WhenWrongDirectionIsSent() {
         String locationAsString = "4 7 t";
 
         IllegalStateException exception = assertThrows(IllegalStateException.class,

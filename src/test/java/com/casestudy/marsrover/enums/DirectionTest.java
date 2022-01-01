@@ -16,7 +16,7 @@ class DirectionTest extends BaseUnitTest {
     }
 
     @Test
-    void getEnumFromValue_Success_WhenWrongValue() {
+    void getEnumFromValue_Fail_WhenWrongValue() {
         IllegalStateException exception = assertThrows(IllegalStateException.class,
                 () -> Direction.getEnumFromValue("F"));
 
