@@ -24,7 +24,7 @@ public class TurnLeftAction implements ActionStrategy {
     }
 
     @Override
-    public ActionCommandType command() {
+    public ActionCommandType getCommand() {
         return ActionCommandType.LEFT;
     }
 

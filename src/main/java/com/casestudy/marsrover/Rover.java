@@ -7,22 +7,27 @@ import com.casestudy.marsrover.strategy.impl.TurnLeftAction;
 import com.casestudy.marsrover.strategy.impl.TurnRightAction;
 import lombok.Data;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Data
 public class Rover {
 
-    private Map<ActionCommandType, ActionStrategy> commandActionMap = new HashMap<>();
-
     private Matrix matrix;
     private Position position;
     private Instruction instruction;
+    private Map<ActionCommandType, ActionStrategy> commandActionMap;
 
     {
-        commandActionMap.put(ActionCommandType.LEFT, TurnLeftAction.getInstance());
-        commandActionMap.put(ActionCommandType.RIGHT, TurnRightAction.getInstance());
-        commandActionMap.put(ActionCommandType.MOVE, MoveForwardAction.getInstance());
+        List<ActionStrategy> actionStrategies = new ArrayList<>();
+        actionStrategies.add(TurnLeftAction.getInstance());
+        actionStrategies.add(TurnRightAction.getInstance());
+        actionStrategies.add(MoveForwardAction.getInstance());
+
+        commandActionMap = actionStrategies.stream()
+                .collect(Collectors.toMap(ActionStrategy::getCommand, actionStrategy -> actionStrategy, (x, y) -> x));
     }
 
     public Rover(Matrix matrix, Position position, Instruction instruction) {

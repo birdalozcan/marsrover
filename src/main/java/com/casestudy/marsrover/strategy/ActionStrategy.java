@@ -6,5 +6,5 @@ import com.casestudy.marsrover.enums.ActionCommandType;
 public interface ActionStrategy {
 
     void action(Position position);
-    ActionCommandType command();
+    ActionCommandType getCommand();
 }
